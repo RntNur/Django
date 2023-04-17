@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{#    # ПОдключение стилей скачанных с bootstrap#}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.0-alpha1-examples/headers/headers.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.0-alpha1/dist/css/bootstrap.min.css' %}">
+{% endblock %}
+{#        Установить изображение из статики в качестве фона#}
+    <style>
+        body {
+            background-image: url("{% static "image/background.jpeg" %}");
+            background-size: cover;
+            opacity: 0.9;
+        }
+    </style>
+{% block content %}
+  <h2 style="text-indent: 10px;">Список книг</h2>
+{#  Добавление разделительных полос между строк таблицы#}
+    <style>
+    table tr:not(:last-child) {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        }
+    </style>
+    <table>
+    <thead>
+{# блок табличных заголовоков#}
+      <tr>
+{#            Табличные заголовоки#}
+         <th style="text-indent: 10px;">Обложка</th>
+        <th style="text-indent: 100px;">Название</th>
+        <th style="text-indent: 360px;">Описание</th>
+        <th style="text-indent: 30px;">Цена</th>
+      </tr>
+    </thead>
+   <tbody>
+   {% csrf_token %}
+      {% for book in books %}
+        <tr>
+        <td style="text-indent: 10px; word-wrap: break-word;">
+          <a href="{% url 'book_detail' book.pk %}">
+            <img src="{% static 'image/' %}{{ book.poster }}" width="100">
+          </a>
+        </td>
+            <td style="text-indent: 30px; font-size: 18px; text-align: center; font-weight: bold;">
+                <a href="{% url 'book_detail' book.pk  %}">{{ book.title }}</a></td>
+          <td style="text-indent: 30px;font-size: 18px;text-align: center;font-weight: bold;">{{ book.description }}</td>
+          <td style="text-indent: 30px; font-size: 18px;font-weight: bold;">{{ book.price }}$</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+    <title>Домашняя</title>
+    <style>
+        body {
+            background-image: url("{% static "image/background.jpeg" %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+
+{% block content %}
+        <div style="text-align:center;">
+          <h2>Добро пожаловать в приложение Library</h2>
+           <p>Здесь ничего особенного, просто домашняя страница</p>
+        </div>
+{% endblock %}

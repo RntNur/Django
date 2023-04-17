@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение информации</title>
+</head>
+
+{% block content %}
+<body>
+    <form method="post" name="book_form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-floating mb-4">
+            <table>
+            {{ book_edit.as_table }}
+                </table>
+        </div>
+        <input class="btn btn-success" type="submit" value="Сохранить">
+    </form>
+</body>
+{% endblock %}
