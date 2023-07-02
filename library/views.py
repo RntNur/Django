@@ -76,13 +76,14 @@ class BookCreate(CreateView):
 
 
 
-#
+# Ниже первая версия функций вывода списка и деталей объектов
+
 # def book_list(request):
 #     books = Book.objects.all()
 #     context = {'books': books}
 #     return render(request, 'book_list.html', context)
 
-#
+
 # def book_detail(request, book_id):
 #     book = Book.objects.values().get(pk=book_id)
 #     context = {'title': book['title'],
